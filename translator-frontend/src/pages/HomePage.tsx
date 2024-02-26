@@ -8,22 +8,29 @@ const HomePage = () => {
     navigate(url);
   };
 
+  const optionBoxDivStyle = {
+    minHeight: "300px",
+    display: "flex",
+    alignItems: "stretch",
+  };
+
   return (
     <div>
       <div className="container-lg">
         <Header value="Online Learner Dictionary" />
-        <div className="container text-center front-layer pb-3">
+        <div className="container text-center front-layer p-5">
+          {/* the light white rectangle surrounding options */}
           <div className="row align-items-center">
-            <div className="mt-3 col-md-3 offset-md-2">
+            <div className="col-3 offset-md-2 " style={optionBoxDivStyle}>
               <OptionBox
-                header="Translator"
-                description="Look up the meanings and example sentences of the words that you are unfamiliar with"
+                header="Dictionary"
+                description="Look up the meanings and example sentences of the word"
                 action={() => {
-                  navigatePage("/translator");
+                  navigatePage("/dictionary");
                 }}
               />
             </div>
-            <div className="mt-3 col-md-3 offset-md-2">
+            <div className="col-3 offset-md-2" style={optionBoxDivStyle}>
               <OptionBox
                 header="Thesaurus"
                 description="Find the synonyms and antonyms of a word"
@@ -33,23 +40,22 @@ const HomePage = () => {
               />
             </div>
           </div>
-
           <div className="row align-items-center">
-            <div className="mt-3 col-md-3 offset-md-2">
+            <div className="mt-5 col-3 offset-md-2" style={optionBoxDivStyle}>
+              <OptionBox
+                header="Translator"
+                description="Translate the English word into your own language"
+                action={() => {
+                  navigatePage("/translator");
+                }}
+              />
+            </div>
+            <div className="mt-5 col-3 offset-md-2" style={optionBoxDivStyle}>
               <OptionBox
                 header="Word quiz"
                 description="Test your vocabulary knowledge with tests"
                 action={() => {
                   navigatePage("/quiz");
-                }}
-              />
-            </div>
-            <div className="mt-3 col-md-3 offset-md-2">
-              <OptionBox
-                header="Translator"
-                description="None"
-                action={() => {
-                  navigatePage("/translator");
                 }}
               />
             </div>

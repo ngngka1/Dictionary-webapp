@@ -1,9 +1,12 @@
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
-// import Button from "./Button";
 import { useState } from "react";
 
-const SearchBox = () => {
+interface SearchBoxProps {
+  searchMode: number;
+}
+
+const SearchBox = ({searchMode}: SearchBoxProps) => {
   const [searchedWord, setSearchedWord] = useState("");
 
   return (
@@ -12,7 +15,7 @@ const SearchBox = () => {
       style={{ backgroundColor: "grey" }}
     >
       <SearchBar setSearchedWord={setSearchedWord} />
-      <SearchResult searchedWord={searchedWord} />
+      <SearchResult searchedWord={searchedWord} searchMode={searchMode}/>
     </div>
   );
 };

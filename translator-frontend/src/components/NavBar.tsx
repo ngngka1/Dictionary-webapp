@@ -32,8 +32,23 @@ const NavBar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/translator">
+                <a className="nav-link active " href="/dictionary">
+                  Dictionary
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" href="/thesaurus">
+                  Thesaurus
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" href="/translator">
                   Translator
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" href="/word-quiz">
+                  Word Quiz
                 </a>
               </li>
             </ul>

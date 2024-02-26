@@ -4,6 +4,7 @@ const baseUrl = "http://127.0.0.1:8000/";
 
 interface SearchResultProps {
   searchedWord: string | "";
+  searchMode: number;
 }
 
 const convertCamelCase = (variableName: string) => {
@@ -13,7 +14,7 @@ const convertCamelCase = (variableName: string) => {
   return separatedName;
 };
 
-const SearchResult = ({ searchedWord }: SearchResultProps) => {
+const SearchResult = ({ searchedWord, searchMode }: SearchResultProps) => {
   const [searchResult, setSearchResult] = useState(
     new Map<string, Array<string>>()
   );
@@ -26,8 +27,11 @@ const SearchResult = ({ searchedWord }: SearchResultProps) => {
   };
 
   useEffect(() => {
+    setIsResolved(false);
     if (searchedWord) {
-      fetchData(baseUrl + "translator/search/" + searchedWord).then(() => {
+      fetchData(
+        baseUrl + "translator/search/" + searchedWord + "/" + String(searchMode)
+      ).then(() => {
         setIsResolved(true);
       });
     }
@@ -57,10 +61,7 @@ const SearchResult = ({ searchedWord }: SearchResultProps) => {
           <p>Loading ...</p>
         )
       ) : (
-        <p>
-          (The meaning and example sentences will be displayed below after
-          searching)
-        </p>
+        <p>(The result will be displayed below after searching)</p>
       )}
     </>
   );
