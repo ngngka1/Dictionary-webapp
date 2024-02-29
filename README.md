@@ -1,6 +1,8 @@
 # Dictionary webapp (WIP)
 
 ![home_preview](READMEassets/home_preview.jpg)
+![dictionary_preview](READMEassets/dictionary_preview.jpg)
+![thesaurus_preview](READMEassets/thesaurus.jpg)
 
 A web application that provides general functions of a learner dictionary, such as: <br>
 
