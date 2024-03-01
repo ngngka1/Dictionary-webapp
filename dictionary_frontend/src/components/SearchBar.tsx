@@ -4,15 +4,17 @@ import searchIcon from "../assets/search_icon.png";
 
 interface SearchBarProps {
   setSearchedWord: (searchedWord: string) => void;
+  setIsSearched: (isSearched: boolean) => void;
 }
 
-const SearchBar = ({ setSearchedWord }: SearchBarProps) => {
+const SearchBar = ({ setSearchedWord, setIsSearched }: SearchBarProps) => {
   const [input, setInput] = useState("");
 
   const handleSubmit = (event: any) => {
     // modify type later
     event.preventDefault();
     setSearchedWord(input);
+    setIsSearched(true); // prompts a search request to parent component
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

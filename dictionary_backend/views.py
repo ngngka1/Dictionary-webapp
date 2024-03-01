@@ -49,13 +49,17 @@ def search_word(request, searched_word: str, mode: int):
     """
     json_data = fetch_data(searched_word).json()
     search_result = {}
+    for key in SEARCH_MODE[mode]["search_items_keys"]:
+        if type(key) is tuple:
+            search_result[key[0]] = set()
     
     get_result(SEARCH_MODE[mode]["search_items_keys"], 0, json_data, search_result, SEARCH_MODE[mode]["omit_blank"])
         
-    data_for_model = search_result.copy()
-    for key, value in data_for_model.items():
-        data_for_model[key] = json.dumps(value)
-        # print("type after json dump: ", type(search_result[key]))
+    data_for_model = {}
+    for key in search_result:
+        search_result[key] = list(search_result[key])
+        data_for_model[key] = json.dumps(search_result[key])
+        
     
     serializer = SearchHistorySerializer(data=data_for_model, partial=True)
     if serializer.is_valid():
@@ -89,10 +93,7 @@ def get_result(search_items_keys: tuple, search_items_keys_index: int, json_data
             
         if result:
             for element in result:
-                if current_key in search_result:
-                    search_result[current_key].append(element)
-                else:
-                    search_result[current_key] = [element]
+                search_result[current_key].add(element)
         get_result(search_items_keys, search_items_keys_index + 1, json_data, search_result, OMIT_BLANK)
     else:
         # move on to the inner nested key-value

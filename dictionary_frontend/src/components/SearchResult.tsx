@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import Box from "./Box";
 
 const baseUrl = "http://127.0.0.1:8000/";
 
 interface SearchResultProps {
+  isSearched: boolean;
+  setIsSearched: (isSearched: boolean) => void;
   searchedWord: string | "";
   searchMode: number;
 }
@@ -14,7 +17,12 @@ const convertCamelCase = (variableName: string) => {
   return separatedName;
 };
 
-const SearchResult = ({ searchedWord, searchMode }: SearchResultProps) => {
+const SearchResult = ({
+  isSearched,
+  setIsSearched,
+  searchedWord,
+  searchMode,
+}: SearchResultProps) => {
   const [searchResult, setSearchResult] = useState(
     new Map<string, Array<string>>()
   );
@@ -28,14 +36,15 @@ const SearchResult = ({ searchedWord, searchMode }: SearchResultProps) => {
 
   useEffect(() => {
     setIsResolved(false);
-    if (searchedWord) {
+    if (searchedWord && isSearched) {
       fetchData(
         baseUrl + "translator/search/" + searchedWord + "/" + String(searchMode)
       ).then(() => {
         setIsResolved(true);
       });
     }
-  }, [searchedWord]); // if searchedWord changed
+    setIsSearched(false); // set the search request false, indicating the search is resolved
+  }, [isSearched]); // if the search status changed
 
   return (
     <>
@@ -44,16 +53,21 @@ const SearchResult = ({ searchedWord, searchMode }: SearchResultProps) => {
           <>
             {Object.entries(searchResult).map(([key, list]) => (
               <div key={key}>
-                <h1>{convertCamelCase(key)}</h1>
-                <div>
-                  {list.map((item: string, index: number) => {
+                <Box
+                  header={convertCamelCase(key)}
+                  boxStyle={{
+                    backgroundColor: "lightgrey",
+                    margin: "20px",
+                    textAlign: "left",
+                  }}
+                  content={list.map((item: string, index: number) => {
                     return (
                       <ul key={index + 1}>
                         {index + 1}: {item}
                       </ul>
                     );
                   })}
-                </div>
+                />
               </div>
             ))}
           </>

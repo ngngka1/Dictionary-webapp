@@ -1,6 +1,7 @@
 import Header from "../components/Header";
-import OptionBox from "../components/OptionBox";
+import Box from "../components/Box";
 import { useNavigate } from "react-router-dom";
+import searchIconSrc from "../assets/search_icon.png";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -22,41 +23,45 @@ const HomePage = () => {
           {/* the light white rectangle surrounding options */}
           <div className="row align-items-center">
             <div className="col-3 offset-md-2 " style={optionBoxDivStyle}>
-              <OptionBox
+              <Box
                 header="Dictionary"
-                description="Look up the meanings and example sentences of the word"
+                content="Look up the meanings and example sentences of the word"
                 action={() => {
                   navigatePage("/dictionary");
                 }}
+                actionButtonImageSrc={searchIconSrc}
               />
             </div>
             <div className="col-3 offset-md-2" style={optionBoxDivStyle}>
-              <OptionBox
+              <Box
                 header="Thesaurus"
-                description="Find the synonyms and antonyms of a word"
+                content="Find the synonyms and antonyms of a word"
                 action={() => {
                   navigatePage("/thesaurus");
                 }}
+                actionButtonImageSrc={searchIconSrc}
               />
             </div>
           </div>
           <div className="row align-items-center">
             <div className="mt-5 col-3 offset-md-2" style={optionBoxDivStyle}>
-              <OptionBox
+              <Box
                 header="Translator"
-                description="Translate the English word into your own language"
+                content="Translate the English word into your own language"
                 action={() => {
                   navigatePage("/translator");
                 }}
+                actionButtonImageSrc={searchIconSrc}
               />
             </div>
             <div className="mt-5 col-3 offset-md-2" style={optionBoxDivStyle}>
-              <OptionBox
+              <Box
                 header="Word quiz"
-                description="Test your vocabulary knowledge with tests"
+                content="Test your vocabulary knowledge with tests"
                 action={() => {
                   navigatePage("/quiz");
                 }}
+                actionButtonImageSrc={searchIconSrc}
               />
             </div>
           </div>
