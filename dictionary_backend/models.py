@@ -9,6 +9,7 @@ class SearchHistory(models.Model):
     definition = models.TextField(default='')
     synonyms = models.TextField(default='')
     antonyms = models.TextField(default='')
+    translation = models.TextField(default='')
     
     def __str__(self):
         return self.word

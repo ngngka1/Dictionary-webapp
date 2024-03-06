@@ -7,7 +7,7 @@ interface BoxProps {
   action?: () => void | null;
   actionButtonText?: string;
   actionButtonImageSrc?: string;
-  boxStyle?: {[key: string]: string};
+  boxStyle?: { [key: string]: string };
 }
 
 const Box = ({
@@ -23,16 +23,10 @@ const Box = ({
     backgroundColor: "grey",
     borderRadius: "20px",
     overflow: "hidden",
-    textAlign: "center",
   };
-  if (boxStyle) {
-    for (let styleName in boxStyle) {
-      defaultBoxStyle[styleName as keyof typeof defaultBoxStyle] = boxStyle[styleName];
-    }
-  }
 
   return (
-    <div style={defaultBoxStyle}>
+    <div style={Object.assign(defaultBoxStyle, boxStyle)}>
       <Header value={header} />
       <p>{content}</p>
       {action && (

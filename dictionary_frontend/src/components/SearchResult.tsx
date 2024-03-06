@@ -50,15 +50,20 @@ const SearchResult = ({
     <>
       {searchedWord ? (
         isResolved ? (
-          <>
+          <div style={{
+            display: "flex",
+            flexFlow: "row nowrap",
+            alignItems: "stretch",
+          }}>
             {Object.entries(searchResult).map(([key, list]) => (
-              <div key={key}>
-                <Box
+                <Box key={key}
                   header={convertCamelCase(key)}
                   boxStyle={{
+                    flex: "1",
                     backgroundColor: "lightgrey",
                     margin: "20px",
                     textAlign: "left",
+                    alignItems: "center",
                   }}
                   content={list.map((item: string, index: number) => {
                     return (
@@ -68,9 +73,8 @@ const SearchResult = ({
                     );
                   })}
                 />
-              </div>
             ))}
-          </>
+          </div>
         ) : (
           <p>Loading ...</p>
         )

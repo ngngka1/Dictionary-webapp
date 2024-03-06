@@ -19,6 +19,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/dictionary" element={<TranslatorPage mode={0} />} />
           <Route path="/thesaurus" element={<TranslatorPage mode={1} />} />
+          <Route path="/translator" element={<TranslatorPage mode={2} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NoPage />} />
         </Routes>

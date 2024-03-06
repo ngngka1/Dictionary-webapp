@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,6 +26,9 @@ SECRET_KEY = 'django-insecure-yn+lmo8anydm7^qid_c9gy9@!q+6=o32^i79a*fz*y(e=nc$0!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+with open(".env", "r") as api_key_file:
+    RAPID_API_KEY = api_key_file.readline().strip()
 
 
 # Application definition
