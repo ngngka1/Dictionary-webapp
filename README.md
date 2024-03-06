@@ -3,7 +3,7 @@
 ![home_preview](READMEassets/home_preview.jpg)
 ![dictionary_test](READMEassets/dictionary_test.png)
 ![thesaurus_test](READMEassets/thesaurus_test.jpg)
-![translator_test](READMEassets/translator_test.png)
+![translator_test](READMEassets/translator_test.jpg)
 
 A web application that provides general functions of a learner dictionary, such as: <br>
 
