@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,8 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-with open(".env", "r") as api_key_file:
-    RAPID_API_KEY = api_key_file.readline().strip()
+RAPID_API_KEY = os.getenv('RAPID_API_KEY')
 
 
 # Application definition
@@ -57,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ORIGIN_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CORS_ORIGIN_ALLOWED_ORIGINS = ["http://localhost:4173"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 

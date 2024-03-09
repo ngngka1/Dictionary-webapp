@@ -1,5 +1,24 @@
 # Dictionary webapp (WIP)
 
+Steps to launch the website with docker:
+
+1. get the docker image:
+
+```
+docker pull ngngka/dictionary-webapp-docker
+```
+Or you may go there: (https://hub.docker.com/repository/docker/ngngka/dictionary-webapp-docker/general)
+
+2. go get a rapid api key from https://rapidapi.com , and put it in .envexample
+3. subscribe to (https://rapidapi.com/andryerics/api/google-translation-unlimited)
+4. Rename .envexample to .env
+5. Run:
+```
+docker-compose up
+```
+6. Done, go to http://localhost:4173/ to access the web app
+
+Previews:
 ![home_preview](READMEassets/home_preview.jpg)
 ![dictionary_test](READMEassets/dictionary_test.png)
 ![thesaurus_test](READMEassets/thesaurus_test.jpg)

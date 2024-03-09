@@ -1,7 +1,8 @@
+import Header from "../components/Header"
 
 const NoPage = () => {
   return (
-    <h2>Page 404 not found</h2>
+    <Header value="Page 404 not found"></Header>
   )
 }
 

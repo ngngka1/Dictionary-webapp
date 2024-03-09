@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./
+      dockerfile: ./base/Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000 # 0.0.0.0:8000 
+    container_name: backend_c
+    ports: # this basically maps local machine port 8000 to the container local port 8000
+      - 8000:8000
+      # Note: ports has 2 functions:
+      # 1. allow access on local machine (local machine port 8000 will point to container port 8000)
+      # 2. other container can access this service with the specified port (8000)
+    volumes:
+      - ./:/app
+    environment:
+      - RAPID_API_KEY=${RAPID_API_KEY}
+    
+
+  frontend:
+    build:
+      context: ./dictionary_frontend
+      dockerfile: Dockerfile
+    container_name: frontend_c
+    ports:
+      - 4173:4173
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+
+
