@@ -43,11 +43,11 @@ docker-compose up
 
 ### dictionary page (with result)
 
-![dictionary_test](READMEassets/dictionary_test.png)
+![dictionary_test](READMEassets/dictionary_test.jpg)
 
 ### thesaurus page (with result)
 
-![thesaurus_test](READMEassets/thesaurus_test.jpg)
+![thesaurus_test](READMEassets/thesaurus_test.png)
 
 ### translator page (with result)
 
