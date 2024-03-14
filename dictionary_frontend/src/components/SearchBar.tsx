@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Button from "./Button";
+import InputField from "./InputField";
 import searchIcon from "../assets/search_icon.png";
 
 interface SearchBarProps {
@@ -8,40 +7,21 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ setSearchedWord, setIsSearched }: SearchBarProps) => {
-  const [input, setInput] = useState("");
-
-  const handleSubmit = (event: any) => {
-    // modify type later
-    event.preventDefault();
-    setSearchedWord(input);
-    setIsSearched(true); // prompts a search request to parent component
-  };
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(event.target.value);
+  const fieldLabel = "";
+  const onSubmitAction = (input: Map<string, string>) => {
+    setSearchedWord(String(input.get(fieldLabel)));
+    setIsSearched(true);
   };
 
   return (
     <div className="container-lg">
       <div className="row align-items-center">
-        <form
-          onSubmit={handleSubmit}
-          className="d-flex flex-row align-items-center "
-        >
-          <div className="col-6 offset-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Word"
-              aria-describedby="basic-addon1"
-              value={input}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="col">
-            <Button type="submit" imageSrc={searchIcon} />
-          </div>
-        </form>
+        <InputField
+          submitButtonImageSrc={searchIcon}
+          callback={onSubmitAction}
+          fieldlabels={[fieldLabel]}
+          fieldtypes={["text"]}
+        />
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ docker pull ngngka/dictionary-webapp-docker
 
 Or you may go there: (https://hub.docker.com/repository/docker/ngngka/dictionary-webapp-docker/general)
 
+### Step 2-3 can be skipped if you dont have a rapidAPI, but you still have to put something in .envexample and rename it to .env
 2. go get a rapid api key from https://rapidapi.com , and put it in .envexample
 3. subscribe to (https://rapidapi.com/andryerics/api/google-translation-unlimited)
 4. Rename .envexample to .env
@@ -35,6 +36,10 @@ docker-compose up
 ### Home page
 
 ![home_preview](READMEassets/home_preview.jpg)
+
+### Login page
+
+![login_preview](READMEassets/login_preview.jpg)
 
 ### dictionary page (with result)
 

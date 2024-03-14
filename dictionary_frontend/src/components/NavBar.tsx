@@ -1,10 +1,13 @@
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 const NavBar = () => {
+  const { user, logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   return (
     <div className="container-fluid p-0">
-      <nav
-        className="navbar navbar-expand-lg"
-        style={{ backgroundColor: "lightblue" }}
-      >
+      <nav className="navbar navbar-expand-lg navbar-background">
         <div className="container">
           <a className="navbar-brand" href="/">
             Online Learner Dictionary
@@ -52,17 +55,20 @@ const NavBar = () => {
                 </a>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+            <button
+              className="btn btn-outline-success"
+              onClick={() => navigate("login/")}
+            >
+              {user ? <>Welcome, {user}</> : "Log in"}
+            </button>
+            <button
+              className="btn btn-outline-success"
+              onClick={() => logoutUser()}
+              disabled={user === ""}
+              style={{display: user ? "inline-block" : "none"}}
+            >
+              Log out
+            </button>
           </div>
         </div>
       </nav>

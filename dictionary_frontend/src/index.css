@@ -12,11 +12,23 @@ body {
 
 .front-layer {
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background: linear-gradient( rgba(232, 142, 232, 0.3), rgba(176, 176, 249, 0.3));
+  /* background-color: rgba(0, 0, 0, 0.1); */
   background-size: contain;
+}
+
+.navbar-background {
+  background: linear-gradient( rgba(232, 142, 232, 0.3), rgba(176, 176, 249, 0.3));
 }
 
 .default-header {
   margin-top: 5%;
   text-align: center;
+}
+
+.box {
+  padding: 20px;
+  background: linear-gradient( rgba(232, 142, 232, 1), rgba(176, 176, 249, 1));;
+  border-radius: 20px;
+  overflow: hidden;
 }

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Box from "./Box";
-
-const baseUrl = "http://127.0.0.1:8000/";
+import Context from "../context/ServerUrlContext";
 
 interface SearchResultProps {
   isSearched: boolean;
@@ -23,6 +22,7 @@ const SearchResult = ({
   searchedWord,
   searchMode,
 }: SearchResultProps) => {
+  const backendServerUrl = useContext(Context);
   const [searchResult, setSearchResult] = useState(
     new Map<string, Array<string>>()
   );
@@ -38,7 +38,11 @@ const SearchResult = ({
     setIsResolved(false);
     if (searchedWord && isSearched) {
       fetchData(
-        baseUrl + "translator/search/" + searchedWord + "/" + String(searchMode)
+        backendServerUrl +
+          "dictionary/search/" +
+          searchedWord +
+          "/" +
+          String(searchMode)
       ).then(() => {
         setIsResolved(true);
       });
@@ -50,29 +54,32 @@ const SearchResult = ({
     <>
       {searchedWord ? (
         isResolved ? (
-          <div style={{
-            display: "flex",
-            flexFlow: "row nowrap",
-            alignItems: "stretch",
-          }}>
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row nowrap",
+              alignItems: "stretch",
+            }}
+          >
             {Object.entries(searchResult).map(([key, list]) => (
-                <Box key={key}
-                  header={convertCamelCase(key)}
-                  boxStyle={{
-                    flex: "1",
-                    backgroundColor: "lightgrey",
-                    margin: "20px",
-                    textAlign: "left",
-                    alignItems: "center",
-                  }}
-                  content={list.map((item: string, index: number) => {
-                    return (
-                      <ul key={index + 1}>
-                        {index + 1}: {item}
-                      </ul>
-                    );
-                  })}
-                />
+              <Box
+                key={key}
+                header={convertCamelCase(key)}
+                boxStyle={{
+                  flex: "1",
+                  backgroundColor: "lightgrey",
+                  margin: "20px",
+                  textAlign: "left",
+                  alignItems: "center",
+                }}
+                content={list.map((item: string, index: number) => {
+                  return (
+                    <ul key={index + 1}>
+                      {index + 1}: {item}
+                    </ul>
+                  );
+                })}
+              />
             ))}
           </div>
         ) : (

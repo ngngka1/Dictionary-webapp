@@ -9,6 +9,7 @@ const HomePage = () => {
     navigate(url);
   };
 
+
   const boxDivStyle = {
     display: "flex",
     flexFlow: "row wrap",
@@ -59,7 +60,7 @@ const HomePage = () => {
             header="Word quiz"
             content="Test your vocabulary knowledge with tests"
             action={() => {
-              navigatePage("/quiz");
+              navigatePage("/word-quiz");
             }}
             actionButtonImageSrc={searchIconSrc}
             boxStyle={optionBoxDivStyle}

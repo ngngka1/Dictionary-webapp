@@ -18,15 +18,8 @@ const Box = ({
   actionButtonImageSrc,
   boxStyle,
 }: BoxProps) => {
-  const defaultBoxStyle = {
-    padding: "20px",
-    backgroundColor: "grey",
-    borderRadius: "20px",
-    overflow: "hidden",
-  };
-
   return (
-    <div style={Object.assign(defaultBoxStyle, boxStyle)}>
+    <div className="box" style={boxStyle}>
       <Header value={header} />
       <p>{content}</p>
       {action && (

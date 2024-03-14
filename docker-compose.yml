@@ -12,8 +12,6 @@ services:
       # Note: ports has 2 functions:
       # 1. allow access on local machine (local machine port 8000 will point to container port 8000)
       # 2. other container can access this service with the specified port (8000)
-    volumes:
-      - ./:/app
     environment:
       - RAPID_API_KEY=${RAPID_API_KEY}
     
